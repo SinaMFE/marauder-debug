@@ -1,0 +1,14 @@
+{
+    "name": "sinamfe-marauder-debug",
+    "version": "0.0.2",
+    "description": "被marauder引用，用于生成debug.js和debug.css的插件",
+    "main": "src/index.js",
+    "demo": "dist/index.html",
+    "module": "src/index.js",
+    "unpkg": "dist/index.js",
+    "author": "fengwan <fengwan@staff.sina.com.cn>",
+    "engines": {
+        "npm": ">= 4.0.0",
+        "node": ">= 6.0.0"
+    }
+}
