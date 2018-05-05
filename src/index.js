@@ -8,6 +8,13 @@ function webpackHttps(localization, options) {
 }
 module.exports = webpackHttps;
 
+const appDirectory = fs.realpathSync(process.cwd())
+function rootPath(relativePath) {
+  return path.resolve(appDirectory, relativePath)
+}
+
+const maraConf = require(rootPath('marauder.config.js'))
+
 var _require = require("webpack-sources"),
     SourceMapSource = _require.SourceMapSource,
     RawSource = _require.RawSource;
@@ -52,12 +59,9 @@ webpackHttps.prototype.apply = function(compiler) {
                 return;
               }
               input = asset.source();
-            // compilation.assets[file] =  new RawSource(input);
-            var debugpath =path.resolve(compilation.outputOptions.path,file).replace("min.js","debug.js").replace("min.css","debug.css");
-               if(!fs.existsSync(path.dirname(debugpath))){
-                mkdirsSync(path.dirname(debugpath));
-               }
-                fs.writeFileSync(debugpath,input,{"encoding": "utf8"})
+              if(maraConf.debug==true){
+                compilation.assets[file.replace("min.js","debug.js").replace("min.css","debug.css")] =  new RawSource(input);
+              }
             } catch (e) {
               compilation.errors.push(e);
             }
