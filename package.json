@@ -1,6 +1,6 @@
 {
     "name": "sinamfe-marauder-debug",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "description": "被marauder引用，用于生成debug.js和debug.css的插件",
     "main": "src/index.js",
     "demo": "dist/index.html",
